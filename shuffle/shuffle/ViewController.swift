@@ -8,8 +8,31 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
+    @IBOutlet weak var chair1: UILabel!
+    @IBOutlet weak var chair2: UILabel!
+    @IBOutlet weak var chair3: UILabel!
+    @IBOutlet weak var chair4: UILabel!
+    
+    
+    
+    //タッチ開始
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //タッチされたビュー
+        let move = touches.first?.view
+        if Double((move?.tag)!)>0 {
+        move?.backgroundColor = UIColor.red
+    }
+    
+    }
+    
+    
+    //タッチ中
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
