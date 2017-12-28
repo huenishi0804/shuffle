@@ -31,6 +31,13 @@ class ViewController: UIViewController {
     
     
     //タッチ中
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //タッチされている座標
+        let loc = touches.first?.location(in: view)
+        if Double((touches.first?.view?.tag)!)>0 {
+            touches.first?.view?.center = loc!
+        }
+    }
     
     
     override func viewDidLoad() {
