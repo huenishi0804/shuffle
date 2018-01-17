@@ -28,7 +28,9 @@ class ViewController: UIViewController {
     
         var member = [Int:UILabel]()
     
-
+        let studentsNumber:Int = 4//クラスの生徒数
+    
+    
     var moveNumber:Int = 0//タッチしているmemberLabelの元の場所のナンバー
     
     var targetNumber:Int = 0//タッチ終わりで入れ替わるmemberLabelの場所のナンバー
@@ -58,7 +60,46 @@ class ViewController: UIViewController {
         let loc = touches.first?.location(in: view)//view?.centerではなぜか動かない
         if Double((touches.first?.view?.tag)!)>0 {
             touches.first?.view?.center = loc!
+            
+            
+            
+            
+            let xrange1 = CGFloat(200)...CGFloat(300)
+            let yrange1 = CGFloat(200)...CGFloat(300)
+            let xrange2 = CGFloat(200)...CGFloat(300)
+            let yrange2 = CGFloat(800)...CGFloat(900)
+            let xrange3 = CGFloat(500)...CGFloat(600)
+            let yrange3 = CGFloat(200)...CGFloat(300)
+            let xrange4 = CGFloat(500)...CGFloat(600)
+            let yrange4 = CGFloat(800)...CGFloat(900)
+            
+            
+            //ドラッグしたmemberラベルが交換候補の近くにきたとき、交換候補を赤く光らせる
+            switch (CGFloat((loc?.x)!), CGFloat((loc?.y)!)) {
+                
+            case (xrange1, yrange1):
+                member[1]?.backgroundColor = UIColor.red
+                
+            case (xrange2, yrange2):
+                member[2]?.backgroundColor = UIColor.red
+                
+            case (xrange3, yrange3):
+                member[3]?.backgroundColor = UIColor.red
+                
+            case (xrange4, yrange4):
+                member[4]?.backgroundColor = UIColor.red
+            case (_, _):
+                for n in 1...studentsNumber {
+                    if n != touches.first?.view?.tag {
+                member[n]?.backgroundColor = UIColor.yellow
+                }
+
+                
+            }
+            
+            
         }
+    }
     }
     
     
@@ -72,6 +113,11 @@ class ViewController: UIViewController {
         
         moveNumber = (touches.first?.view?.tag)!
         
+        
+        //このifの判定をつけないと背景をタッチしたら背景全てがyellowとなってしまう
+        if Double((touches.first?.view?.tag)!)>0 {
+        touches.first?.view?.backgroundColor = UIColor.yellow
+        }
         print("離した座標",touchEnd)
         
         
@@ -166,7 +212,7 @@ class ViewController: UIViewController {
         
 
         
-        let studentsNumber:Int = 4//クラスの生徒数
+
 
         
         member = [1:yamada, 2:tanaka, 3:yamamoto, 4:matsumoto]
