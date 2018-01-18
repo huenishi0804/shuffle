@@ -138,7 +138,7 @@ class ViewController: UIViewController {
             member[targetNumber]?.frame = (chair[targetNumber]?.frame)!
             
 
-            
+            member[moveNumber]?.backgroundColor = UIColor.yellow
             
             //ちゃんと動いているのかチェック
 //            print("ケース",targetNumber)
